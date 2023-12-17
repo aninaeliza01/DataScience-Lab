@@ -12,3 +12,4 @@ clf.fit(x_train,y_train)
 v=clf.predict(x_test)
 print(v)
 print(accuracy_score(y_test,v))
+new_data=
