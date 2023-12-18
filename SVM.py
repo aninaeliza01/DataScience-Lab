@@ -1,8 +1,10 @@
-from sklearn.metrics import accuracy_score, classification_report
+from sklearn.metrics import accuracy_score, classification_report,confusion_matrix
 from sklearn.datasets import fetch_20newsgroups
 from sklearn.svm import SVC
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import train_test_split
+import seaborn as sea
+import matplotlib.pyplot as py
 
 categories = ['alt.atheism', 'soc.religion.christian', 'comp.graphics', 'sci.med']
 
@@ -33,3 +35,9 @@ pred = svm.predict(x_new)
 for i, text in enumerate(new_data):
     print(f"{text}")
     print(data.target_names[pred[i]])
+
+
+confusion_matrix=confusion_matrix(y_test,predictions)
+print(confusion_matrix)
+sea.heatmap(confusion_matrix,annot=True,fmt='g')
+py.show()
