@@ -1,7 +1,9 @@
 from sklearn.datasets import load_breast_cancer
 from sklearn.naive_bayes import GaussianNB
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score,confusion_matrix
 from sklearn.model_selection import train_test_split
+import seaborn as sea
+import matplotlib.pyplot as py
 
 cancer=load_breast_cancer()
 x=cancer.data
@@ -17,3 +19,8 @@ new_data = [[14.21, 20.85, 92.55, 623.9, 0.097, 0.123, 0.089, 0.037, 0.21, 0.056
 new_prediction = nav.predict(new_data)
 predicted_category = cancer.target_names[new_prediction[0]]
 print("Prediction for new sample:", predicted_category)
+
+confusion_matrix=confusion_matrix(y_test,v)
+print("Confusion Matrix:",confusion_matrix)
+sea.heatmap(confusion_matrix,annot=True,fmt='g')
+py.show()
