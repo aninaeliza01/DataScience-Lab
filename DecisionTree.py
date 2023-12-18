@@ -1,6 +1,6 @@
 from sklearn.datasets import load_iris
 from sklearn.tree import DecisionTreeClassifier, plot_tree
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score,classification_report
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 
@@ -16,7 +16,7 @@ tree.fit(x_train, y_train)
 y_pred = tree.predict(x_test)
 accuracy = accuracy_score(y_test, y_pred)
 print("Accuracy:", accuracy)
-
+print("Classification Report\n",classification_report(y_test, y_pred, target_names=iris.target_names))
 new_data = [[5.1, 3.5, 1.4, 0.2]]
 
 predicted_class = tree.predict(new_data)
